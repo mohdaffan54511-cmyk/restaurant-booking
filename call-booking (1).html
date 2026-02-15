@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Call - Restaurant Excel Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Caveat:wght@400;600;700&family=Lexend+Exa:wght@400;600;700&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("XM-q-5fl51U0TWNVB");
+        })();
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 100%;
+            padding: 40px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-family: 'Caveat', cursive;
+            color: #333;
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        .benefits {
+            background: #f8f9ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+        }
+
+        .benefits h3 {
+            font-family: 'Caveat', cursive;
+            color: #667eea;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .benefits ul {
+            list-style: none;
+            color: #555;
+        }
+
+        .benefits li {
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .benefits li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .btn-submit {
+            font-family: 'Lexend Exa', sans-serif;
+            width: 100%;
+            padding: 15px;
+            background: #301CA0;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(48, 28, 160, 0.4);
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+
+        .success-message {
+            display: none;
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .whatsapp-info {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .whatsapp-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: #25D366;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .whatsapp-btn:hover {
+            background: #20BA5A;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 25px;
+            }
+
+            .header h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Free Demo Call Book Karein</h1>
+            <p>Restaurant Excel Solutions</p>
+        </div>
+
+        <div class="benefits">
+            <h3>Aapko milega:</h3>
+            <ul>
+                <li>15 minute ka free demo</li>
+                <li>Custom Excel solutions</li>
+                <li>Sales & inventory tracking</li>
+                <li>Staff management system</li>
+                <li>Profit analysis tools</li>
+            </ul>
+        </div>
+
+        <form id="bookingForm">
+            <div class="form-group">
+                <label for="name">Aapka Naam *</label>
+                <input type="text" id="name" name="name" required placeholder="Enter your name">
+            </div>
+
+            <div class="form-group">
+                <label for="restaurant">Restaurant ka Naam *</label>
+                <input type="text" id="restaurant" name="restaurant" required placeholder="Restaurant name">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" name="phone" required placeholder="10 digit mobile number" pattern="[0-9]{10}">
+            </div>
+
+            <div class="form-group">
+                <label for="preferredTime">Preferred Call Time</label>
+                <select id="preferredTime" name="preferredTime">
+                    <option value="morning">Morning (10 AM - 12 PM)</option>
+                    <option value="afternoon">Afternoon (2 PM - 5 PM)</option>
+                    <option value="evening">Evening (6 PM - 8 PM)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="challenges">What challenges are you facing? (Optional)</label>
+                <textarea id="challenges" name="challenges" placeholder="Daily sales tracking, inventory management, staff salary calculation"></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">📞 Book Free Demo Call</button>
+        </form>
+
+        <div id="successMessage" class="success-message">
+            ✅ Thank you! Aapki booking confirm ho gayi hai. Hum jaldi aapse contact karenge.
+        </div>
+
+        <div class="whatsapp-info">
+            <p>Ya direct WhatsApp karein:</p>
+            <a href="https://wa.me/918573879324?text=Hi, I want to book a demo for restaurant Excel solutions" class="whatsapp-btn" target="_blank">
+                💬 WhatsApp par Message Karein
+            </a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                restaurant: document.getElementById('restaurant').value,
+                phone: document.getElementById('phone').value,
+                preferredTime: document.getElementById('preferredTime').value,
+                challenges: document.getElementById('challenges').value
+            };
+
+            // Disable submit button to prevent double submission
+            const submitBtn = document.querySelector('.btn-submit');
+            submitBtn.disabled = true;
+            submitBtn.textContent = '📤 Sending...';
+
+            // Send email using EmailJS
+            emailjs.send("service_zyrdwm3", "template_qixkze9", {
+                to_email: "mohdaffan54511@gmail.com",
+                from_name: formData.name,
+                restaurant_name: formData.restaurant,
+                phone_number: formData.phone,
+                preferred_time: formData.preferredTime,
+                challenges: formData.challenges || 'Not specified',
+                reply_to: formData.phone
+            })
+            .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
+                
+                // Show success message
+                document.getElementById('successMessage').classList.add('show');
+                
+                // Hide form
+                document.getElementById('bookingForm').style.display = 'none';
+                
+            }, function(error) {
+                console.log('FAILED...', error);
+                alert('Sorry, there was an error. Please WhatsApp us directly.');
+                submitBtn.disabled = false;
+                submitBtn.textContent = '📞 Book Free Demo Call';
+            });
+        });
+
+        // Phone number validation
+        document.getElementById('phone').addEventListener('input', function(e) {
+            this.value = this.value.replace(/[^0-9]/g, '').slice(0, 10);
+        });
+    </script>
+</body>
+</html>
