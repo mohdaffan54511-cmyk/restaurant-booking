@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Call - Restaurant Excel Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Caveat:wght@400;600;700&family=Lexend+Exa:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            position: relative;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: #FF6B35;
+            border-radius: 50%;
+            top: -150px;
+            left: -150px;
+            z-index: 0;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            width: 350px;
+            height: 350px;
+            background: #7C3AED;
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+            z-index: 0;
+        }
+
+        .decorative-circle-1 {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            background: #FF6B35;
+            border-radius: 50%;
+            bottom: -100px;
+            right: 15%;
+            z-index: 0;
+        }
+
+        .decorative-circle-2 {
+            position: fixed;
+            width: 250px;
+            height: 250px;
+            background: #7C3AED;
+            border-radius: 50%;
+            bottom: -50px;
+            right: 5%;
+            z-index: 0;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            padding: 40px;
+            position: relative;
+            z-index: 1;
+            margin: 20px auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
+            color: #333;
+            font-size: 36px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        .benefits {
+            background: #FFF5F0;
+            border-left: 4px solid #FF6B35;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+        }
+
+        .benefits h3 {
+            font-family: 'Caveat', cursive;
+            color: #FF6B35;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .benefits ul {
+            list-style: none;
+            color: #555;
+        }
+
+        .benefits li {
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .benefits li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #FF6B35;
+            font-weight: bold;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #FF6B35;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .btn-submit {
+            font-family: 'Lexend Exa', sans-serif;
+            width: 100%;
+            padding: 15px;
+            background: #FF6B35;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 107, 53, 0.4);
+            background: #E85A2A;
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+
+        .success-message {
+            display: none;
+            margin-top: 30px;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .whatsapp-info {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .whatsapp-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: #25D366;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .whatsapp-btn:hover {
+            background: #20BA5A;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 25px;
+            }
+
+            .header h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="decorative-circle-1"></div>
+    <div class="decorative-circle-2"></div>
+    <div class="container">
+        <div class="header">
+            <h1><span style="display: inline-block; background: linear-gradient(135deg, #2845D6, #FF6B35); color: white; padding: 8px 16px; border-radius: 8px; font-weight: 700; margin-right: 12px; font-size: 24px; font-family: 'Lexend Exa', sans-serif;">Affan Excel</span> Book Free Demo</h1>
+            <p>Professional Excel Solutions</p>
+        </div>
+
+        <div class="benefits">
+            <h3>Professional Excel Solutions for Every Business</h3>
+            <p style="margin-bottom: 15px; color: #555; font-size: 14px;">Transform your data management with our world-class Excel services. From automation to business intelligence, we streamline your operations and save you time.</p>
+            <ul>
+                <li>Data Cleaning & Formatting - Transform messy data into professional reports</li>
+                <li>Precision Data Entry - High-speed, error-free record keeping</li>
+                <li>Advanced Automation & Macros - One-click VBA solutions for repetitive tasks</li>
+                <li>Custom Dashboards - Real-time tracking of sales, inventory & KPIs</li>
+                <li>Dynamic Data Forms - User-friendly forms with dropdown menus</li>
+                <li>Multilingual Support - 100+ language translation capabilities</li>
+                <li>Business Intelligence - In-depth profit/loss analysis & forecasting</li>
+            </ul>
+        </div>
+
+        <form id="bookingForm">
+            <div class="form-group">
+                <label for="name">Your Name *</label>
+                <input type="text" id="name" name="name" required placeholder="Enter your name">
+            </div>
+
+            <div class="form-group">
+                <label for="restaurant">Company/Business Name *</label>
+                <input type="text" id="restaurant" name="restaurant" required placeholder="Your company or business name">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" required placeholder="your@email.com">
+            </div>
+
+            <div class="form-group">
+                <label for="preferredTime">Preferred Call Time</label>
+                <select id="preferredTime" name="preferredTime">
+                    <option value="morning">Morning (10 AM - 12 PM)</option>
+                    <option value="afternoon">Afternoon (2 PM - 5 PM)</option>
+                    <option value="evening">Evening (6 PM - 8 PM)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="challenges">What challenges are you facing? (Optional)</label>
+                <textarea id="challenges" name="challenges"></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">SUBMIT</button>
+        </form>
+
+        <div id="successMessage" class="success-message">
+            <div style="background: #D4F4DD; padding: 40px; border-radius: 15px; text-align: center; margin-bottom: 30px;">
+                <h2 style="font-size: 36px; color: #1a1a1a; margin-bottom: 10px;">Thank you!</h2>
+                <p style="color: #555; font-size: 16px; margin-bottom: 5px;">for contacting me</p>
+                <p style="color: #666; font-size: 14px; line-height: 1.6; margin-top: 15px;">You should be receiving an automated email right about *now* to confirm your message was sent. Then you'll hear from the real Affan in 1-3 business days!</p>
+                <p style="color: #666; margin-top: 20px; font-size: 15px;">❤️ <strong>Mohd Affan</strong><br><span style="font-size: 13px; color: #888;">Professional Excel Solutions</span></p>
+            </div>
+            
+            <div style="background: #D4F4DD; padding: 40px; border-radius: 15px; text-align: center;">
+                <h3 style="font-size: 24px; color: #1a1a1a; margin-bottom: 20px;">📅 Schedule Meet</h3>
+                <p style="color: #666; margin-bottom: 25px; font-size: 15px;">Book your free 30-minute consultation call</p>
+                <a href="https://calendly.com/mohdaffan54511/30min" target="_blank" style="display: inline-block; padding: 16px 40px; background: #0069FF; color: white; text-decoration: none; border-radius: 10px; font-weight: 600; font-size: 17px;">📅 Schedule on Calendly</a>
+            </div>
+        </div>
+
+    <script>
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                restaurant: document.getElementById('restaurant').value,
+                email: document.getElementById('email').value,
+                preferredTime: document.getElementById('preferredTime').options[document.getElementById('preferredTime').selectedIndex].text,
+                challenges: document.getElementById('challenges').value || 'Not specified'
+            };
+
+            // Create WhatsApp message
+            const whatsappMessage = `New Demo Booking Request:
+
+Name: ${formData.name}
+Company: ${formData.restaurant}
+Email: ${formData.email}
+Preferred Time: ${formData.preferredTime}
+Challenges: ${formData.challenges}`;
+
+            // Show success message
+            document.getElementById('successMessage').classList.add('show');
+            
+            // Hide form
+            document.getElementById('bookingForm').style.display = 'none';
+            
+            // Hide benefits section
+            document.querySelector('.benefits').style.display = 'none';
+            
+            // Hide header
+            document.querySelector('.header').style.display = 'none';
+        });
+    </script>
+</body>
+</html>
